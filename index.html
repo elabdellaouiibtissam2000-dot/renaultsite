@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renault Universe | Experience</title>
+    <style>
+        :root {
+            --renault-yellow: #ffc400;
+            --dark-bg: #0a0a0a;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Hero Video Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            filter: brightness(0.6);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--dark-bg));
+            z-index: 0;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            animation: fadeIn 2s ease;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--renault-yellow);
+        }
+
+        /* Models Section */
+        .models-container {
+            padding: 100px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: -100px; /* Bach d-khl chwiya f l-video */
+            position: relative;
+            z-index: 2;
+        }
+
+        .model-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px); /* Effét dyal z-jaj */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .model-card:hover {
+            transform: translateY(-15px);
+            background: rgba(255, 196, 0, 0.1);
+            border-color: var(--renault-yellow);
+        }
+
+        .model-card img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+
+        .model-card h3 {
+            margin: 15px 0 5px;
+            font-size: 1.5rem;
+        }
+
+        .model-card span {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Modal simple li kayban fach t-cliqui */
+        #car-details {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+            background: white;
+            color: black;
+            padding: 40px;
+            border-radius: 20px;
+            z-index: 100;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+        }
+
+        .close-btn {
+            background: var(--renault-yellow);
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <video autoplay loop muted playsinline>
+            <source src="video-renault.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+            <h1>RENAULT</h1>
+            <p>PASSION FOR LIFE</p>
+        </div>
+    </section>
+
+    <div class="models-container">
+        <div class="model-card" onclick="openDetails('Renault Clio', 'Economique et élégante. Idéale pour la ville.', 'À partir de 140,000 DH')">
+            <h3>Clio</h3>
+            <span>Citadine</span>
+        </div>
+        <div class="model-card" onclick="openDetails('Renault Captur', 'Le SUV urbain par excellence.', 'À partir de 190,000 DH')">
+            <h3>Captur</h3>
+            <span>SUV</span>
+        </div>
+        <div class="model-card" onclick="openDetails('Renault Megane E-Tech', '100% électrique, 100% futuriste.', 'À partir de 450,000 DH')">
+            <h3>Megane</h3>
+            <span>Electrique</span>
+        </div>
+        <div class="model-card" onclick="openDetails('Renault Austral', 'Le nouveau SUV athlétique.', 'À partir de 320,000 DH')">
+            <h3>Austral</h3>
+            <span>Hybride</span>
+        </div>
+        <div class="model-card" onclick="openDetails('Renault Arkana', 'Le design sportif hybride.', 'À partir de 280,000 DH')">
+            <h3>Arkana</h3>
+            <span>Coupé SUV</span>
+        </div>
+    </div>
+
+    <div id="car-details">
+        <h2 id="modal-title"></h2>
+        <p id="modal-desc"></p>
+        <p><strong id="modal-price"></strong></p>
+        <button class="close-btn" onclick="closeDetails()">Fermer</button>
+    </div>
+
+    <script>
+        function openDetails(name, desc, price) {
+            document.getElementById('modal-title').innerText = name;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('modal-price').innerText = price;
+            document.getElementById('car-details').style.display = 'block';
+        }
+
+        function closeDetails() {
+            document.getElementById('car-details').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
