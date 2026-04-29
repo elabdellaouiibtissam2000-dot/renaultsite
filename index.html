@@ -1,1 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renault Showroom - Modèles 2026</title>
+    <style>
+        :root {
+            --renault-yellow: #ffcc00;
+            --bg-dark: #111111;
+            --card-bg: #1e1e1e;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--bg-dark);
+            color: white;
+        }
+
+        /* Header avec Logo */
+        header {
+            background: var(--renault-yellow);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .logo-header {
+            max-width: 150px;
+            height: auto;
+        }
+
+        h1 {
+            color: #000;
+            margin: 10px 0 0;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        /* Gallery Grid */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--renault-yellow);
+            box-shadow: 0 10px 20px rgba(255, 204, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--renault-yellow);
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            margin: 0 0 15px;
+            font-size: 1.4rem;
+            color: var(--renault-yellow);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: var(--renault-yellow);
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="https://assets.renaultgroup.com/uploads/2024/11/marque-renault-embleme-mobile.jpg?format=webp&width=3840" alt="Renault Logo" class="logo-header">
+    <h1>Renault Showroom</h1>
+</header>
+
+<div class="container">
+    <div class="grid">
+
+        <div class="card">
+            <img src="https://www.wandaloo.com/files/Voiture-Neuve/renault-megane-sedan.jpg" alt="Renault Mégane">
+            <div class="card-content">
+                <h3>Mégane Sedan</h3>
+                <a href="#" class="btn">Découvrir</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.caradisiac.com/logos/2/5/2/5/262525/S0-renault-commence-a-abandonner-le-diesel-185529.jpg" alt="Renault Range">
+            <div class="card-content">
+                <h3>Gamme Renault</h3>
+                <a href="#" class="btn">Découvrir</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://assets.renaultgroup.com/uploads/2024/11/renault-rafale-carrousel-mobile.jpg?format=webp&width=3840" alt="Renault Rafale">
+            <div class="card-content">
+                <h3>Renault Rafale</h3>
+                <a href="#" class="btn">Découvrir</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.lesiteinfo.com/wp-content/uploads/2024/11/Renault-Kardian-1.jpg" alt="Renault Kardian">
+            <div class="card-content">
+                <h3>Renault Kardian</h3>
+                <a href="#" class="btn">Découvrir</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://cdn-datak.motork.net/configurator-imgs/cars/fr/400/RENAULT/5-E-TECH-ELECTRIC/44521_BERLINE-A-HAYON-5-PORTES/renault-5-etech-front-view.jpg" alt="Renault 5 E-Tech">
+            <div class="card-content">
+                <h3>5 E-Tech Electric</h3>
+                <a href="#" class="btn">Découvrir</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.wandaloo.com/files/Voiture-Neuve/renault-megane-sedan.jpg" alt="Renault Arkana">
+            <div class="card-content">
+                <h3>Arkana SUV</h3>
+                <a href="#" class="btn">Découvrir</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://assets.renaultgroup.com/uploads/2024/11/renault-rafale-carrousel-mobile.jpg?format=webp&width=3840" alt="Renault Austral">
+            <div class="card-content">
+                <h3>Renault Austral</h3>
+                <a href="#" class="btn">Découvrir</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 Showroom Renault - Créé pour GitHub Pages
+</footer>
+
+</body>
+</html>
