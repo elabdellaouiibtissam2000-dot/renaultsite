@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Renault Showroom - Ibtissam El Abdellaoui</title>
+    <title>Renault Showroom - Expérience Client</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -20,70 +20,26 @@
             scroll-behavior: smooth;
         }
 
-        /* --- Hero Section مع الفيديو --- */
+        /* Hero Section */
         .hero {
-            position: relative;
             height: 100vh;
-            width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), 
+                        url('https://assets.renaultgroup.com/uploads/2024/11/renault-rafale-carrousel-mobile.jpg?format=webp&width=3840');
+            background-size: cover;
+            background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            overflow: hidden;
             border-bottom: 5px solid var(--renault-yellow);
         }
 
-        #bg-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -1;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-        }
+        .hero img { width: 120px; margin-bottom: 20px; background: var(--renault-yellow); padding: 10px; border-radius: 10px; }
+        .hero h1 { font-size: 3.5rem; margin: 0; text-transform: uppercase; font-weight: 900; }
+        .hero p { font-size: 1.2rem; color: var(--renault-yellow); margin-top: 10px; letter-spacing: 2px; }
 
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5); 
-            z-index: 0;
-        }
-
-        .hero-content {
-            z-index: 1;
-            padding: 20px;
-        }
-
-        .hero img { 
-            width: 120px; 
-            margin-bottom: 20px; 
-            background: var(--renault-yellow); 
-            padding: 10px; 
-            border-radius: 10px; 
-        }
-
-        .hero h1 { 
-            font-size: clamp(2.5rem, 8vw, 4rem); 
-            margin: 0; 
-            text-transform: uppercase; 
-            font-weight: 900;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-        }
-
-        .hero p { 
-            font-size: 1.2rem; 
-            color: var(--renault-yellow); 
-            margin-top: 10px; 
-            letter-spacing: 2px; 
-            font-weight: bold;
-        }
-
-        /* --- Container & Grid --- */
+        /* Container & Grid */
         .container { width: 90%; max-width: 1200px; margin: 60px auto; }
         .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--renault-yellow); text-transform: uppercase; }
         
@@ -118,7 +74,7 @@
             cursor: pointer;
         }
 
-        /* --- Section Contact (PRO) --- */
+        /* --- Section Contact (NEW & PRO) --- */
         .contact-section {
             background: #1a1a1a;
             padding: 80px 20px;
@@ -138,25 +94,45 @@
             background: var(--card-bg);
             padding: 30px;
             border-radius: 20px;
-            width: 280px;
+            width: 300px;
             border: 1px solid #333;
             transition: 0.3s;
         }
 
         .contact-box:hover { border-color: var(--renault-yellow); transform: scale(1.05); }
+
         .contact-box i { font-size: 40px; color: var(--renault-yellow); margin-bottom: 20px; }
+
         .contact-box h3 { margin-bottom: 10px; font-size: 1.5rem; }
-        .contact-box a { color: #ccc; text-decoration: none; font-size: 1.1rem; word-break: break-all; }
+
+        .contact-box a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 1.1rem;
+            word-break: break-all;
+        }
+
         .contact-box a:hover { color: var(--renault-yellow); }
 
-        /* Floating WhatsApp */
+        /* Floating WhatsApp Button */
         .whatsapp-float {
-            position: fixed; bottom: 40px; right: 40px;
-            background-color: #25d366; color: white;
-            width: 60px; height: 60px; border-radius: 50px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-            z-index: 100; text-decoration: none; transition: 0.3s;
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
         }
         .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
 
@@ -182,16 +158,9 @@
 </a>
 
 <section class="hero">
-    <video autoplay muted loop playsinline id="bg-video">
-        <source src="renault-promo.mp4" type="video/mp4">
-        Votre navigateur ne supporte pas la vidéo.
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-        <img src="https://assets.renaultgroup.com/uploads/2024/11/marque-renault-embleme-mobile.jpg" alt="Logo">
-        <h1>RENAULT SHOWROOM</h1>
-        <p>L'EXPÉRIENCE CLIENT AU CŒUR DE NOS PRIORITÉS</p>
-    </div>
+    <img src="https://assets.renaultgroup.com/uploads/2024/11/marque-renault-embleme-mobile.jpg?format=webp&width=3840" alt="Logo">
+    <h1>RENAULT SHOWROOM</h1>
+    <p>L'EXPÉRIENCE CLIENT AU CŒUR DE NOS PRIORITÉS</p>
 </section>
 
 <div class="container">
@@ -202,31 +171,27 @@
             <div class="card-content"><h3>Mégane Sedan</h3><button class="btn">Détails</button></div>
         </div>
         <div class="card" onclick="openModal('Renault Rafale')">
-            <img src="https://assets.renaultgroup.com/uploads/2024/11/renault-rafale-carrousel-mobile.jpg" alt="Rafale">
+            <img src="https://assets.renaultgroup.com/uploads/2024/11/renault-rafale-carrousel-mobile.jpg?format=webp&width=3840" alt="Rafale">
             <div class="card-content"><h3>Renault Rafale</h3><button class="btn">Détails</button></div>
         </div>
         <div class="card" onclick="openModal('Renault Kardian')">
             <img src="https://www.lesiteinfo.com/wp-content/uploads/2024/11/Renault-Kardian-1.jpg" alt="Kardian">
             <div class="card-content"><h3>Renault Kardian</h3><button class="btn">Détails</button></div>
         </div>
-        <div class="card">
-            <div style="width: 100%; height: 200px; overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center;">
-                <video autoplay muted loop playsinline style="width: 100%; height: auto; object-fit: contain;">
-                    <source src="renault-5-video.mp4" type="video/mp4">
-                </video>
-            </div>
+        <div class="card" onclick="openModal('5 E-Tech Electric')">
+            <img src="https://cdn-datak.motork.net/configurator-imgs/cars/fr/400/RENAULT/5-E-TECH-ELECTRIC/44521_BERLINE-A-HAYON-5-PORTES/renault-5-etech-front-view.jpg" alt="R5">
             <div class="card-content"><h3>5 E-Tech Electric</h3><button class="btn">Détails</button></div>
         </div>
     </div>
 </div>
 
 <section class="contact-section">
-    <h2 class="section-title">Contactez nos Experts</h2>
+    <h2 class="section-title" style="margin-bottom: 50px;">Contactez nos Experts</h2>
     <div class="contact-container">
         <div class="contact-box">
             <i class="fas fa-phone-alt"></i>
             <h3>Téléphone</h3>
-            <a href="tel:+212775127765">07 75 12 77 65</a>
+            <a href="tel:+212775127765">+212 7 75 12 77 65</a>
         </div>
         <div class="contact-box">
             <i class="fas fa-envelope"></i>
@@ -264,12 +229,17 @@
 
     function openModal(model) {
         document.getElementById("modalTitle").innerText = model;
-        document.getElementById("modalDescription").innerText = descriptions[model] || "Détails techniques à venir.";
+        document.getElementById("modalDescription").innerText = descriptions[model];
         document.getElementById("myModal").style.display = "block";
     }
 
-    function closeModal() { document.getElementById("myModal").style.display = "none"; }
-    window.onclick = function(event) { if (event.target == document.getElementById("myModal")) { closeModal(); } }
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("myModal")) { closeModal(); }
+    }
 </script>
 
 </body>
