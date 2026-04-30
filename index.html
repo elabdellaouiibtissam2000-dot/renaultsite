@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Renault Showroom - Expérience Client</title>
+    <title>Renault Showroom - Bienvenue</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -20,135 +20,85 @@
             scroll-behavior: smooth;
         }
 
-        /* Hero Section */
+        /* --- Hero Video Section --- */
         .hero {
+            position: relative;
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), 
-                        url('https://assets.renaultgroup.com/uploads/2024/11/renault-rafale-carrousel-mobile.jpg?format=webp&width=3840');
-            background-size: cover;
-            background-position: center;
+            width: 100%;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            border-bottom: 5px solid var(--renault-yellow);
-        }
-
-        .hero img { width: 120px; margin-bottom: 20px; background: var(--renault-yellow); padding: 10px; border-radius: 10px; }
-        .hero h1 { font-size: 3.5rem; margin: 0; text-transform: uppercase; font-weight: 900; }
-        .hero p { font-size: 1.2rem; color: var(--renault-yellow); margin-top: 10px; letter-spacing: 2px; }
-
-        /* Container & Grid */
-        .container { width: 90%; max-width: 1200px; margin: 60px auto; }
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--renault-yellow); text-transform: uppercase; }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 15px;
+            justify-content: center;
             overflow: hidden;
-            border: 1px solid #333;
-            transition: 0.4s;
-            cursor: pointer;
         }
 
-        .card:hover { transform: translateY(-10px); border-color: var(--renault-yellow); }
-        .card img { width: 100%; height: 200px; object-fit: cover; }
-        .card-content { padding: 20px; text-align: center; }
+        #bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 25px;
-            background: var(--renault-yellow);
-            color: #000;
-            text-decoration: none;
-            border-radius: 5px;
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .hero-content {
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin: 0;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--renault-yellow);
+            margin-top: 15px;
             font-weight: bold;
-            border: none;
-            cursor: pointer;
+            letter-spacing: 2px;
         }
 
-        /* --- Section Contact (NEW & PRO) --- */
-        .contact-section {
-            background: #1a1a1a;
-            padding: 80px 20px;
-            text-align: center;
-        }
+        /* Grid Style */
+        .container { width: 90%; max-width: 1200px; margin: 80px auto; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--renault-yellow); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: var(--card-bg); border-radius: 15px; overflow: hidden; border: 1px solid #333; transition: 0.4s; cursor: pointer; }
+        .card:hover { transform: translateY(-10px); border-color: var(--renault-yellow); }
+        .card img { width: 100%; height: 230px; object-fit: cover; }
+        .card-content { padding: 25px; text-align: center; }
+        .btn { display: inline-block; padding: 10px 25px; background: var(--renault-yellow); color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; }
 
-        .contact-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .contact-box {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            width: 300px;
-            border: 1px solid #333;
-            transition: 0.3s;
-        }
-
-        .contact-box:hover { border-color: var(--renault-yellow); transform: scale(1.05); }
-
+        /* Contact Section */
+        .contact-section { background: #1a1a1a; padding: 80px 20px; text-align: center; }
+        .contact-container { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .contact-box { background: var(--card-bg); padding: 30px; border-radius: 20px; width: 280px; border: 1px solid #333; }
         .contact-box i { font-size: 40px; color: var(--renault-yellow); margin-bottom: 20px; }
+        .contact-box a { color: #ccc; text-decoration: none; font-size: 1.1rem; }
 
-        .contact-box h3 { margin-bottom: 10px; font-size: 1.5rem; }
+        /* Floating WhatsApp */
+        .whatsapp-float { position: fixed; bottom: 40px; right: 40px; background-color: #25d366; color: white; width: 65px; height: 65px; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 5px 15px rgba(0,0,0,0.4); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; }
 
-        .contact-box a {
-            color: #ccc;
-            text-decoration: none;
-            font-size: 1.1rem;
-            word-break: break-all;
-        }
+        /* Modal */
+        .modal { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); }
+        .modal-content { background-color: #1e1e1e; margin: 10% auto; padding: 40px; border: 2px solid var(--renault-yellow); width: 50%; border-radius: 20px; text-align: center; }
+        .close { color: var(--renault-yellow); float: right; font-size: 35px; cursor: pointer; }
 
-        .contact-box a:hover { color: var(--renault-yellow); }
-
-        /* Floating WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
-
-        /* Modal Style */
-        .modal {
-            display: none; position: fixed; z-index: 10000; left: 0; top: 0;
-            width: 100%; height: 100%; background-color: rgba(0,0,0,0.9);
-        }
-        .modal-content {
-            background-color: #1e1e1e; margin: 10% auto; padding: 30px;
-            border: 2px solid var(--renault-yellow); width: 60%; border-radius: 15px;
-            text-align: center; position: relative;
-        }
-        .close { color: var(--renault-yellow); float: right; font-size: 30px; cursor: pointer; font-weight: bold; }
-
-        footer { text-align: center; padding: 40px; color: #555; font-size: 0.9rem; background: #000; }
+        footer { text-align: center; padding: 50px; color: #666; font-size: 0.9rem; background: #000; }
     </style>
 </head>
 <body>
@@ -158,13 +108,18 @@
 </a>
 
 <section class="hero">
-    <img src="https://assets.renaultgroup.com/uploads/2024/11/marque-renault-embleme-mobile.jpg?format=webp&width=3840" alt="Logo">
-    <h1>RENAULT SHOWROOM</h1>
-    <p>L'EXPÉRIENCE CLIENT AU CŒUR DE NOS PRIORITÉS</p>
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="https://assets.renaultgroup.com/uploads/2024/05/renault-5-etech-electric-video-hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>BIENVENUE CHEZ RENAULT</h1>
+        <p>Innovation & Expérience Client</p>
+    </div>
 </section>
 
 <div class="container">
-    <h2 class="section-title">Nos Modèles</h2>
+    <h2 class="section-title">NOS MODÈLES EXCLUSIFS</h2>
     <div class="grid">
         <div class="card" onclick="openModal('Mégane Sedan')">
             <img src="https://www.wandaloo.com/files/Voiture-Neuve/renault-megane-sedan.jpg" alt="Mégane">
@@ -182,26 +137,20 @@
             <img src="https://cdn-datak.motork.net/configurator-imgs/cars/fr/400/RENAULT/5-E-TECH-ELECTRIC/44521_BERLINE-A-HAYON-5-PORTES/renault-5-etech-front-view.jpg" alt="R5">
             <div class="card-content"><h3>5 E-Tech Electric</h3><button class="btn">Détails</button></div>
         </div>
-    </div>
+        </div>
 </div>
 
 <section class="contact-section">
-    <h2 class="section-title" style="margin-bottom: 50px;">Contactez nos Experts</h2>
     <div class="contact-container">
         <div class="contact-box">
             <i class="fas fa-phone-alt"></i>
-            <h3>Téléphone</h3>
-            <a href="tel:+212775127765">+212 7 75 12 77 65</a>
+            <h3>APPEL</h3>
+            <a href="tel:+212775127765">07 75 12 77 65</a>
         </div>
         <div class="contact-box">
             <i class="fas fa-envelope"></i>
-            <h3>E-mail</h3>
+            <h3>EMAIL</h3>
             <a href="mailto:elabdellaouiibtissam@gmail.com">elabdellaouiibtissam@gmail.com</a>
-        </div>
-        <div class="contact-box">
-            <i class="fas fa-headset"></i>
-            <h3>Service Client</h3>
-            <p style="color: #888;">Disponible 24/7 pour vous accompagner.</p>
         </div>
     </div>
 </section>
@@ -209,37 +158,32 @@
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
-    <h2 id="modalTitle" style="color:#ffcc00"></h2>
-    <p id="modalDescription" style="font-size: 18px; line-height: 1.6;"></p>
+    <h2 id="modalTitle" style="color:var(--renault-yellow); margin-bottom: 20px;"></h2>
+    <p id="modalDescription" style="font-size: 1.2rem; line-height: 1.8;"></p>
   </div>
 </div>
 
 <footer>
-    &copy; 2026 Renault Showroom - Ibtissam El Abdellaoui<br>
-    Projet Gestion Expérience Client - Spécialité Marketing Digital
+    &copy; 2026 Renault Morocco - Ibtissam El Abdellaoui<br>
+    Gestion Expérience Client & Marketing Digital
 </footer>
 
 <script>
     const descriptions = {
-        "Mégane Sedan": "Berline élégante offrant un confort supérieur et une sécurité maximale.",
-        "Renault Rafale": "Le summum de l'innovation hybride Renault avec un design audacieux.",
-        "Renault Kardian": "Le nouveau SUV compact fabriqué au Maroc, agile et robuste.",
-        "5 E-Tech Electric": "La réinvention d'une icône en version 100% électrique."
+        "Mégane Sedan": "Confort et élégance pour une expérience client premium au quotidien.",
+        "Renault Rafale": "SUV hybride au design audacieux, l'innovation au service de la performance.",
+        "Renault Kardian": "SUV compact et agile, idéal pour l'aventure urbaine au Maroc.",
+        "5 E-Tech Electric": "L'icône Renault revisitée en version 100% électrique."
     };
 
     function openModal(model) {
         document.getElementById("modalTitle").innerText = model;
-        document.getElementById("modalDescription").innerText = descriptions[model];
+        document.getElementById("modalDescription").innerText = descriptions[model] || "Détails techniques à venir.";
         document.getElementById("myModal").style.display = "block";
     }
 
-    function closeModal() {
-        document.getElementById("myModal").style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if (event.target == document.getElementById("myModal")) { closeModal(); }
-    }
+    function closeModal() { document.getElementById("myModal").style.display = "none"; }
+    window.onclick = function(event) { if (event.target == document.getElementById("myModal")) { closeModal(); } }
 </script>
 
 </body>
